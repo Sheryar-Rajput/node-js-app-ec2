@@ -21,7 +21,7 @@ sudo systemctl enable nginx
 git clone https://github.com/Sheryar-Rajput/node-js-app-ec2.git
 
 # cd 
-cd node-js-app-ec2
+cd *node
 # Install dependencies for your Node.js app
 npm install
 
@@ -31,26 +31,4 @@ pm2 startup systemd
 pm2 save
 
 cd ..
-
-# Nginx configuration for Node.js app
-
-# need to do this after ec2 start
-#  /etc/nginx/nginx.conf
-# server {
-#     listen 80;
-
-#     server_name your-domain-or-public-ip;
-
-#     location / {
-#         proxy_pass http://localhost:5000;
-#         proxy_http_version 1.1;
-#         proxy_set_header Upgrade $http_upgrade;
-#         proxy_set_header Connection 'upgrade';
-#         proxy_set_header Host $host;
-#         proxy_cache_bypass $http_upgrade;
-#     }
-# }
-
-
-# Restart Nginx to apply the new configuration
 sudo systemctl restart nginx

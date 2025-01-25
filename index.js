@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 
-app.listen(80, () => {
+app.listen(3000, () => {
   console.log("app is running on 80 port");
 });
 
