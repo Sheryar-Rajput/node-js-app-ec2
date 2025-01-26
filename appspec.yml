@@ -1,0 +1,28 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/
+
+hooks:
+  BeforeInstall:
+    - runas: ubuntu
+      timeout: 300
+      script: |
+        # Stop running app (if any)
+        pm2 stop 0 || true
+  AfterInstall:
+    - runas: ubuntu
+      timeout: 300
+      script: |
+        # Navigate to app directory
+        cd /home/ubuntu/node-js-app-ec2
+        # Install dependencies
+        npm install
+  ApplicationStart:
+    - runas: ubuntu
+      timeout: 300
+      script: |
+        # Start app using PM2
+        cd /home/ubuntu/node-js-app-ec2
+        pm2 start index.js --name "node-app"
