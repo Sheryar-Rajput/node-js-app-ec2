@@ -10,14 +10,14 @@ permissions:
     mode: 755
 hooks:
   BeforeInstall:
-    - runas: ubuntu
+    - location: scripts/before_install.sh
+      runas: ubuntu
       timeout: 300
-      script: scripts/before_install.sh
   AfterInstall:
-    - runas: ubuntu
+    - location: scripts/after_install.sh
+      runas: ubuntu
       timeout: 300
-      script: scripts/after_install.sh
   ApplicationStart:
-    - runas: ubuntu
+    - location: scripts/start_app.sh
+      runas: ubuntu
       timeout: 300
-      script: scripts/start_app.sh
