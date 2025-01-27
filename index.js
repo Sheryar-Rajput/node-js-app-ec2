@@ -9,7 +9,7 @@ app.listen(3000, () => {
 app.use(express.json());
 
 app.get("/", (req, res) => {
-  return res.status(200).send("hello world");
+  return res.status(200).send("hello from Ec2");
 });
 
 app.post("/", (req, res) => {

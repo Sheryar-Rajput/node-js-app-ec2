@@ -32,3 +32,15 @@ pm2 save
 
 cd ..
 sudo systemctl restart nginx
+
+
+# code deploy agent
+sudo yum -y install ruby
+sudo yum -y install wget
+wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install
+sudo chmod +x ./install
+sudo ./install auto
+sudo yum install -y python-pip
+sudo pip install awscli
+sudo systemctl start codedeploy-agent
+sudo systemctl enable codedeploy-agent
