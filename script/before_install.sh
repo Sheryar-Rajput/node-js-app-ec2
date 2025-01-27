@@ -7,4 +7,4 @@ pm2 stop node-app || true
 
 # Remove old files
 echo "Cleaning up old files..."
-rm -rf /home/ubuntu/node-js-app-ec2/*
+sudo rm -rf /home/ubuntu/node-js-app-ec2/*
