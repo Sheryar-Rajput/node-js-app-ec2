@@ -2,27 +2,22 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /home/ubuntu/
-
+    destination: /home/ubuntu/node-js-app-ec2
+permissions:
+  - object: /home/ubuntu/node-js-app-ec2
+    owner: ubuntu
+    group: ubuntu
+    mode: 755
 hooks:
   BeforeInstall:
     - runas: ubuntu
       timeout: 300
-      script: |
-        # Stop running app (if any)
-        pm2 stop 0 || true
+      script: scripts/before_install.sh
   AfterInstall:
     - runas: ubuntu
       timeout: 300
-      script: |
-        # Navigate to app directory
-        cd /home/ubuntu/node-js-app-ec2
-        # Install dependencies
-        npm install
+      script: scripts/after_install.sh
   ApplicationStart:
     - runas: ubuntu
       timeout: 300
-      script: |
-        # Start app using PM2
-        cd /home/ubuntu/node-js-app-ec2
-        pm2 start index.js --name "node-app"
+      script: scripts/start_app.sh
