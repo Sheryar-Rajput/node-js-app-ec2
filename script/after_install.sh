@@ -5,4 +5,4 @@ echo "Navigating to application directory..."
 cd /home/ubuntu/node-js-app-ec2
 
 echo "Installing dependencies..."
-npm ci --only=production
+npm install
